@@ -2,7 +2,7 @@
 """
 Created on Fri Nov 21 20:30:17 2014
 
-@author: stdm
+@author: nojetlag
 """
 
 import csv as csv 
