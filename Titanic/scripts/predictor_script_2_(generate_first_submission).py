@@ -8,11 +8,11 @@ Created on Fri Nov 21 20:30:17 2014
 import csv as csv 
 
 # Open up the CSV file into a Python object
-test_file = open('../data/titanic/titanic3_test.csv', 'r')
+test_file = open('titanic/data/titanic3_test.csv', 'r')
 test_file_object = csv.reader(test_file, delimiter=';') 
 header = next(test_file_object)
 
-prediction_file = open("../data/titanic/submission1_genderbased.csv", "w")
+prediction_file = open("titanic/submissions/submission1_genderbased.csv", "w")
 prediction_file_object = csv.writer(prediction_file, delimiter=';')
     
 prediction_file_object.writerow(["key", "value"])
