@@ -10,7 +10,8 @@ import os
 import l_utils as utils
 from xgboost import XGBClassifier
 
-#Prediction Score: 0.850574
+#Prediction Score: 0.850574 without boat
+#Prediction Score: 0.977011 with boat
 
 print('Modul overview:')
 print('sklearn: {}'.format(sklearn.__version__))
