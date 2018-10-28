@@ -10,6 +10,8 @@ import os
 import l_utils as utils
 from xgboost import XGBClassifier
 
+#Prediction Score: 0.850574
+
 print('Modul overview:')
 print('sklearn: {}'.format(sklearn.__version__))
 print('pandas: {}'.format(pd.__version__))
@@ -25,7 +27,7 @@ utils.clean_data(test)
 
 print(train.shape)
 target = train["survived"].values
-features = train[["pclass", "age", "sex", "fare", "sibsp", "parch", "embarked"]].values
+features = train[["pclass", "age", "sex", "fare", "sibsp", "parch", "embarked","boat"]].values
 
 # XGBoost 
 
@@ -38,9 +40,9 @@ xgbc = XGBClassifier(
 )
 xgbc.fit(features,target)
 
-print(xgbc.feature_importances_)
-print(xgbc.score(features, target))
+print("importances", xgbc.feature_importances_)
+print("score", xgbc.score(features, target))
 
-test_features = test[["pclass", "age", "sex", "fare", "sibsp", "parch", "embarked"]].values
+test_features = test[["pclass", "age", "sex", "fare", "sibsp", "parch", "embarked","boat"]].values
 prediction_xgbc = xgbc.predict(test_features)
-utils.write_prediction(prediction_xgbc, "titanic/submissions/submission_xgbc_1.csv")
+utils.write_prediction(prediction_xgbc, "titanic/submissions/submission_xgbc_2.csv")

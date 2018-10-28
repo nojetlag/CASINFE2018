@@ -22,6 +22,21 @@ def clean_data(data):
     data.loc[data["embarked"] == "C", "embarked"] = 1
     data.loc[data["embarked"] == "Q", "embarked"] = 2
 
+    data["boat"] = data["boat"].fillna(999)
+    data.loc[data["boat"] == "A", "boat"] = 995
+    data.loc[data["boat"] == "B", "boat"] = 996
+    data.loc[data["boat"] == "C", "boat"] = 997
+    data.loc[data["boat"] == "D", "boat"] = 998
+    data.loc[data["boat"] == "C D", "boat"] = 998
+    data.loc[data["boat"] == "5 9", "boat"] = 990
+    data.loc[data["boat"] == "5 7", "boat"] = 991
+    data.loc[data["boat"] == "8 10", "boat"] = 992
+    data.loc[data["boat"] == "13 15 B", "boat"] = 993
+    data.loc[data["boat"] == "13 15", "boat"] = 994
+    data.loc[data["boat"] == "15 16", "boat"] = 994
+
+
+
 def write_prediction(prediction, name):
     PassengerId = np.array(test["id"]).astype(int)
     solution = pd.DataFrame(prediction, PassengerId, columns = ["survived"])
