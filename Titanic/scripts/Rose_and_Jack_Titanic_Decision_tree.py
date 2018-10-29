@@ -22,7 +22,7 @@ print ("\nExtracting target and features")
 
 print(train.shape)
 target = train["survived"].values
-features = train[["pclass", "sex", "age", "fare","sibsp","parch"]].values
+features = train[["pclass", "sex", "age", "fare"]].values
 
 decision_tree = tree.DecisionTreeClassifier(random_state = 1)
 decision_tree = decision_tree.fit(features, target)
