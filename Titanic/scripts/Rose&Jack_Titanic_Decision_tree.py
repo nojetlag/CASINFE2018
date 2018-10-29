@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Oct 24 21:10:44 2018
+Created on Wed Oct 29 09:45 2018
+Team Rose & Jack 
 
 """
 
