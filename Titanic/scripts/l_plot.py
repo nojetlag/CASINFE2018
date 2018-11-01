@@ -28,5 +28,3 @@ def titanic_survived(dataset):
     g.map(plt.hist, "age", alpha=0.5)
     
     plt.show()
-
-
