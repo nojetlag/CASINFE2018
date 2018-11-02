@@ -6,12 +6,16 @@ Team Rose & Jack
 """
 
 import l_utils as utils
-import numpy as np
+import l_plot as plot
 import pandas as pd
 from sklearn import tree, model_selection
 
-train = pd.read_csv('titanic/data/titanic3_train.csv', sep=';')
-test = pd.read_csv('titanic/data/titanic3_test.csv', sep=';')
+train = pd.read_csv('../data/titanic3_train.csv', sep=';')
+test = pd.read_csv('../data/titanic3_test.csv', sep=';')
+
+print("\nFirst look at the Data")
+plot.ts_mapplot(dataset=train, grid_rv='sex', grid_cv='pclass', grid_hue='survived', map_v='age')
+plot.ts_surv_prop(dataset=train, xv='age', yv='survived', colv='sex', huev='sex')
 
 print ("\nCleaning up some data")
 
@@ -34,7 +38,7 @@ print ("\nTry on test set")
 
 test_features = test[["pclass", "sex", "age", "fare"]].values
 prediction = decision_tree.predict(test_features)
-utils.write_prediction(prediction, "titanic/submissions/decision_tree.csv")
+utils.write_prediction(prediction, "../submissions/decision_tree.csv")
 # Resultat -> 0.7576923076923077
 
 print ("\nCorrect overfitting")
@@ -59,5 +63,5 @@ print ("\nWrite new predicition")
 
 test_features_two = test[["pclass", "age", "sex", "fare", "sibsp", "parch", "embarked"]].values
 prediction_two = decision_tree_two.predict(test_features_two)
-utils.write_prediction(prediction_two, "titanic/submissions/Rose_and_Jack_pre.csv")
+utils.write_prediction(prediction_two, "../submissions/Rose_and_Jack_pre.csv")
 # Resultat ->  0.7961538461538461

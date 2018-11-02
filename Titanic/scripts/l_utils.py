@@ -8,8 +8,8 @@ Created on Wed Oct 24 20:26:12 2018
 import numpy as np
 import pandas as pd
 
-test = pd.read_csv('titanic3_test.csv', sep=';')
-train = pd.read_csv('titanic3_train.csv', sep=';')
+test = pd.read_csv('../data/titanic3_test.csv', sep=';')
+train = pd.read_csv('../data/titanic3_train.csv', sep=';')
 
 print(test.mean())
 print(train.mean())
@@ -18,8 +18,8 @@ print(train.mean())
 
 
 def clean_data(data):
-    test = pd.read_csv('titanic3_test.csv', sep=';')
-    train = pd.read_csv('titanic3_train.csv', sep=';')
+    test = pd.read_csv('../data/titanic3_test.csv', sep=';')
+    train = pd.read_csv('../data/titanic3_train.csv', sep=';')
 
     combine = pd.concat([train, test])
 
