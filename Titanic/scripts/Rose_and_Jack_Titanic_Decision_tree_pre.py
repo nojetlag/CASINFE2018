@@ -42,7 +42,7 @@ print ("\nCorrect overfitting")
 feature_names = ["pclass", "age", "sex", "fare", "sibsp", "parch", "embarked"]
 features_two = train[feature_names].values
 decision_tree_two = tree.DecisionTreeClassifier(
-    max_depth = 7,
+    max_depth = 3,
     min_samples_split = 2,
     random_state = 1)
 decision_tree_two = decision_tree_two.fit(features_two, target)
