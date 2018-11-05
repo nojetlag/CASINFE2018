@@ -10,17 +10,29 @@ Created on Mon Oct 29 10:30:16 2018
 import seaborn as sns
 import matplotlib.pyplot as plt
 import warnings
-import numpy as np
+
 
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
 def clean_boats(dataset):
+    '''
+    Replaces Boat Values with 
+    - 1 for: made it to a boat
+    - 0 for: did not make it to boat
+    '''
     data = dataset[:]
     data["boat"] = data["boat"].fillna(0)
     data.loc[data["boat"] != 0 , "boat"] = 1
     return data
 
 def ts_mapplot(dataset, grid_rv, grid_cv, grid_hue, map_v):
+    '''
+    Prints Grid Map with diffrent Histograms according to the variable
+    complete grid row values: grid_rv
+    complete grid column values: grid_cv
+    complete grid values to differ by color: grid_hue
+    Values for the actual histogram: map_v
+    '''
     #set style for Plots
     sns.set(style="darkgrid")
     
@@ -35,6 +47,14 @@ def ts_mapplot(dataset, grid_rv, grid_cv, grid_hue, map_v):
 
 
 def ts_surv_prop(dataset, xv, yv, colv, huev):
+    '''
+    Prints a combination of lineplots
+    dataset = df
+    xv = x Values
+    yv = y values
+    colv = columns for different lineplots
+    huev = values to differ by color
+    '''
     #set style for Plots
     sns.set(style="darkgrid")
 
