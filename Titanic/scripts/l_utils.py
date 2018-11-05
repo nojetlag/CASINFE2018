@@ -8,20 +8,11 @@ Created on Wed Oct 24 20:26:12 2018
 import numpy as np
 import pandas as pd
 
-test = pd.read_csv('../data/titanic3_test.csv', sep=';')
-train = pd.read_csv('../data/titanic3_train.csv', sep=';')
+test = pd.DataFrame
 
-print(test.mean())
-print(train.mean())
+def clean_data(data,testfile,trainfile):
 
-
-
-
-def clean_data(data):
-    test = pd.read_csv('../data/titanic3_test.csv', sep=';')
-    train = pd.read_csv('../data/titanic3_train.csv', sep=';')
-
-    combine = pd.concat([train, test])
+    combine = pd.concat([pd.read_csv(testfile, sep=";"), pd.read_csv(trainfile, sep=";")])
 
     data["fare"] = data["fare"].fillna(combine["fare"].dropna().median())
     data["age"] = data["age"].fillna(combine["age"].dropna().median())
@@ -39,23 +30,23 @@ def clean_data(data):
     data.loc[data["embarked"] == "Q", "embarked"] = 2
     
 #neu
-    data["boat"] = data["boat"].fillna(999)
-    data.loc[data["boat"] == "A", "boat"] = 995
-    data.loc[data["boat"] == "B", "boat"] = 996
-    data.loc[data["boat"] == "C", "boat"] = 997
-    data.loc[data["boat"] == "D", "boat"] = 998
-    data.loc[data["boat"] == "C D", "boat"] = 881
-    data.loc[data["boat"] == "5 9", "boat"] = 990
-    data.loc[data["boat"] == "5 7", "boat"] = 991
-    data.loc[data["boat"] == "8 10", "boat"] = 992
-    data.loc[data["boat"] == "13 15 B", "boat"] = 993
-    data.loc[data["boat"] == "13 15", "boat"] = 880
-    data.loc[data["boat"] == "15 16", "boat"] = 994
-    
-    
+    data["boat"] = data["boat"].fillna(0)
+    data.loc[data["boat"] == "A", "boat"] = 17
+    data.loc[data["boat"] == "B", "boat"] = 18
+    data.loc[data["boat"] == "C", "boat"] = 19
+    data.loc[data["boat"] == "D", "boat"] = 20
+    data.loc[data["boat"] == "C D", "boat"] = 21
+    data.loc[data["boat"] == "5 9", "boat"] = 21
+    data.loc[data["boat"] == "5 7", "boat"] = 21
+    data.loc[data["boat"] == "8 10", "boat"] = 21
+    data.loc[data["boat"] == "13 15 B", "boat"] = 21
+    data.loc[data["boat"] == "13 15", "boat"] = 21
+    data.loc[data["boat"] == "15 16", "boat"] = 21
     
 
-def write_prediction(prediction, name):
+def write_prediction(prediction, testfile, predictionfile):
+    print("write prediction")
+    test = pd.read_csv(testfile, sep=";")
     PassengerId = np.array(test["id"]).astype(int)
     solution = pd.DataFrame(prediction, PassengerId, columns = ["survived"])
-    solution.to_csv(name, index_label = ["id"])
+    solution.to_csv(predictionfile, index_label = ["id"], sep=";")
